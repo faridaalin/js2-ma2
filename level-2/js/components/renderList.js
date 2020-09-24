@@ -5,6 +5,10 @@ import removeItem from "../components/removeItem.js";
 const renderList = (array) => {
   const list = document.querySelector(".list");
   list.innerHTML = "";
+
+  if (array.length === 0) {
+    list.innerHTML = `<li class="empty">You have no items in this list</li>`;
+  }
   array.forEach((item) => {
     list.innerHTML += `<li>${item.title}<button data-id="${item.id}">Remove</button></li>`;
   });

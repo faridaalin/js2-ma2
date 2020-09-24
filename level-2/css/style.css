@@ -6,6 +6,7 @@ header {
   font-size: 28px;
   padding: 16px 32px;
   color: #bd7c07;
+  text-transform: uppercase;
 }
 
 .main {

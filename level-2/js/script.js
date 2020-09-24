@@ -5,9 +5,11 @@ import { saveToStorage, getFromStorage } from "./utils/storage.js";
 import { listKey } from "./settings.js";
 import deleteList from "./components/deleteList.js";
 
-const listItems = getFromStorage(listKey);
-saveToStorage(listKey, listItems);
 deleteList();
+
+window.addEventListener("load", () => {
+  saveToStorage(listKey, getFromStorage(listKey));
+});
 
 button.addEventListener("click", addItem);
 input.addEventListener("keyup", (e) => {
