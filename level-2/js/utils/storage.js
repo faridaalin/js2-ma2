@@ -10,6 +10,5 @@ export const getFromStorage = (key) => {
 
 export const saveToStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
-  // const item = getFromStorage(key);
   renderList(value);
 };

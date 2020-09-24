@@ -1,5 +1,6 @@
 import { saveToStorage } from "../utils/storage.js";
 import { listKey } from "../settings.js";
+import removeItem from "../components/removeItem.js";
 
 const renderList = (array) => {
   const list = document.querySelector(".list");
@@ -12,20 +13,12 @@ const renderList = (array) => {
   removeButtons.forEach((button) => {
     button.addEventListener("click", handleClick);
   });
+
   function handleClick(e) {
     const id = e.target.dataset.id;
     const updatedList = removeItem(id, array);
-    console.log(list);
     saveToStorage(listKey, updatedList);
   }
 };
 
 export default renderList;
-
-function removeItem(id, array) {
-  const updatedList = array.filter(
-    (item) => parseInt(item.id) !== parseInt(id)
-  );
-
-  return updatedList;
-}

@@ -37,3 +37,7 @@ li button {
 .add-field {
   display: flex;
 }
+
+.add-field button {
+  margin-left: 16px;
+}
