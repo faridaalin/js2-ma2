@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  font-size: 28px;
+  padding: 16px 32px;
+  color: #bd7c07;
+}
+
+.main {
+  padding: 8px 16px;
+}
+
+li {
+  display: flex;
+  flex: 1;
+}
+
+li button {
+  margin-left: 16px;
+  margin-left: auto;
+  background-color: #d68d07;
+  border: 0.1rem solid #d68d07;
+  color: white;
+}
+
+.empty {
+  background-color: #ffe4b2;
+  padding: 32px;
+  color: #634714;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  border-style: dotted;
+}
