@@ -33,3 +33,7 @@ li button {
   letter-spacing: 1.2px;
   border-style: dotted;
 }
+
+.add-field {
+  display: flex;
+}

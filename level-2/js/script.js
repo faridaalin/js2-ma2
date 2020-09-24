@@ -1,37 +1,31 @@
-import books from "../data/data.js";
-const list = document.querySelector(".list");
+const button = document.querySelector(".button");
+const input = document.querySelector(".input");
 
-let myBooks = books;
-renderBooks(myBooks);
+import { saveToStorage, getFromStorage } from "./utils/storage.js";
+import { listKey } from "./settings.js";
 
-function renderBooks(books) {
-  if (books.length > 0) {
-    list.innerHTML = "";
-    books.forEach((book) => {
-      list.innerHTML += `<li><span>${book.title}</span><button class"remove-btn" data-id="${book.isbn}">Remove</button></li>`;
-    });
-  } else {
-    list.innerHTML = `<li class="empty">Your book list is empty</li>`;
+const listItems = getFromStorage(listKey);
+saveToStorage(listKey, listItems);
+
+button.addEventListener("click", addItem);
+input.addEventListener("keyup", (e) => {
+  if (e.key === "Enter" || e.keyCode === 13) {
+    addItem();
   }
+});
 
-  const removeButtons = document.querySelectorAll("li button");
-  removeButtons.forEach((button) => {
-    button.addEventListener("click", handleClick);
-  });
-}
+function addItem() {
+  const inputValue = input.value.trim();
 
-function handleClick(e) {
-  const id = e.target.dataset.id;
-  const updateBooksList = deleteBook(myBooks, id);
-  myBooks = updateBooksList;
+  if (inputValue.length > 0) {
+    const newItem = {
+      title: inputValue,
+      id: Date.now(),
+    };
+    listItems.push(newItem);
+    saveToStorage(listKey, listItems);
 
-  renderBooks(myBooks);
-}
-
-function deleteBook(books, id) {
-  const filteredBooks = books.filter(
-    (item) => parseInt(id) !== parseInt(item.isbn)
-  );
-
-  return filteredBooks;
+    input.value = "";
+    input.focus();
+  }
 }
